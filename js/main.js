@@ -196,11 +196,23 @@ function getQueryVariable(variable)
        return(false);
 }
 
+function addCheckbox(containerSelector, name, checked) {
+    var container = $(containerSelector);
+    var inputs = container.find('input');
+    var id = (inputs.length || 0)+1;
+ 
+    $('<input />', { 'class': 'guestcoming', type: 'checkbox', id: 'cb'+id, value: name, checked: checked }).appendTo(container);
+    $('<label />', { 'for': 'cb'+id, text: name }).appendTo(container);
+    $('<br />').appendTo(container);
+ }
+
 function UserDetails() {
     usercode = getQueryVariable("id");
+    let guestnames = "";
+    let attendingnames = "";
     if (usercode) {
         $.get( apiurl+"/guestcode/"+usercode, function( data ) {
-            console.log("DATA",data)
+            console.log("DATA GUESTCODE",data)
             userid = data.id;
             username = data.name;
             useremail = data.email;
@@ -230,6 +242,18 @@ function UserDetails() {
                 }
             });
             $("#comingkids").val(data.comingkids || "0")
+
+            console.log("DATA guestnames",data.guestnames);
+            console.log("DATA attendingnames",data.attendingnames);
+            let guests = data.guestnames.split(",");
+            let attending = [];
+            if (data.attendingnames) { attending = data.attendingnames.split(","); }
+            guests.forEach(name => {
+                name = name.trim()
+                addCheckbox("#guestnames", name, attending.includes(name))
+            })
+
+            // Set top page greeting
             $("#greeting").text(`Dear ${username}`)
         });  
     }
@@ -238,18 +262,38 @@ UserDetails();
 
 function saveUserDetails(event) {
     event.preventDefault();
+    // let guestscoming = $('.guestcoming:checkbox:checked')
+    // console.log("guestscoming",guestscoming)
+    // let attendingguests = [];
+    // guestscoming.each((checkbox) => {
+    //     console.log($(checkbox).val(),checkbox)
+    //     attendingguests.push($(checkbox).val())
+    // })
+    // attendingguests = attendingguests.join(",")
+    $('#rsvpmessage').hide();
+    let attendingguests = $('input.guestcoming:checked').map(function() {return this.value}).get().join(',');
     let data = {
         special: $("#special").val(),
         song: $("#song").val(),
         coming: $("#coming").val(),
         comingkids: $("#comingkids").val(),
         dietry: $("#dietry").val(),
-        attending: $("#attending").val()
+        attending: $("#attending").val(),
+        attendingnames: attendingguests
     }
     console.log("saveUserDetails",data)
-    $.post(apiurl+"/guestcode/"+usercode, data, function( data ) {
-        console.log("SUCCESSFULLY UPDATED")
-    });  
+    let options = {
+        url: apiurl+"/guestcode/"+usercode,
+        type: 'PUT',
+        data: data
+    }
+    
+    $.ajax(options)
+    .always(function() {            
+        $('#rsvpmessage').show(); 
+        console.log("your response has been saved saved")
+    })
+      
 }
 $('#rsvpsubmit').on('click',saveUserDetails)
 

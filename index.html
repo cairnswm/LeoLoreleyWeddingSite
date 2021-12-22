@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Leo and Loreley Pre-Wedding</title>
+    <title>Leo and Loreley Pre-Engagement</title>
     <link rel="shortcut icon" type="image/png" href="img/icon.png">
     <!-- Place favicon.ico in the root directory -->
     <!-- bootstrap.min.css -->
@@ -150,7 +150,10 @@
             <div class="col-12">
                 
                 <div class="section-title text-center">
-                <h3>William and Yolande Cairns<br/> heartily invite you to the wedding of their daughter <br/><span style="font-size:70px">Loreley Cairns to Leonard Strydom</span>,<br/> on Tuesday 15 March 2022, 15:30.</h3>
+                <h3>William and Yolande Cairns<br/> heartily invite you to the wedding of their daughter <br/>
+                    <span style="font-size:70px">Loreley Cairns to Leonard Strydom</span>,<br/> 
+                    <span>son of Pete and Vanessa Strydom, </span><br/>
+                    on Tuesday 15 March 2022, 15:30.</h3>
                 </div>
             </div>
         </div>
@@ -677,13 +680,13 @@
                 <div class="col-12">
                     <div class="gallery-menu text-center">
                         <button class="active" data-filter="*">All</button>
-                        <button data-filter=".Pre-Wedding">Pre Wedding</button>
+                        <button data-filter=".Pre-Engagement">Pre Engagement</button>
                         <button data-filter=".Enagagement">Enagagement</button>
                     </div>
                 </div>
             </div>
             <div class="row grid">
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Wedding">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Engagement">
                     <div class="gallery-single">
                         <a href="img/gallery/pre1.jpg" class="expand-img">
                             <img src="img/gallery/pre1.jpg" alt="">
@@ -691,42 +694,42 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Wedding">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Engagement">
                     <div class="gallery-single">
                         <a href="img/gallery/pre3.jpg" class="expand-img">
                             <img src="img/gallery/pre3.jpg" alt="">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Wedding">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Engagement">
                     <div class="gallery-single">
                         <a href="img/gallery/pre4.jpg" class="expand-img">
                             <img src="img/gallery/pre4.jpg" alt="">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Wedding">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Engagement">
                     <div class="gallery-single">
                         <a href="img/gallery/pre5.jpg" class="expand-img">
                             <img src="img/gallery/pre5.jpg" alt="">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Wedding">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Engagement">
                     <div class="gallery-single">
                         <a href="img/gallery/pre6.jpg" class="expand-img">
                             <img src="img/gallery/pre6.jpg" alt="">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Wedding">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Engagement">
                     <div class="gallery-single">
                         <a href="img/gallery/pre7.jpg" class="expand-img">
                             <img src="img/gallery/pre7.jpg" alt="">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Wedding">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item Pre-Engagement">
                     <div class="gallery-single">
                         <a href="img/gallery/pre8.jpg" class="expand-img">
                             <img src="img/gallery/pre8.jpg" alt="">
@@ -740,7 +743,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 col-sm-6 grid-item Pre-Wedding">
+                <div class="col-lg-4 col-md-6 col-12 col-sm-6 grid-item Pre-Engagement">
                     <div class="gallery-single">
                         <a href="img/gallery/pre2.jpg" class="expand-img">
                             <img src="img/gallery/pre22.jpg" alt="">
@@ -845,6 +848,10 @@
                                         </select>
                                     </div>
                                     <div class="col col-sm-6">
+                                        <label>Who will be coming?</label>
+                                        <div id="guestnames"></div>
+                                    </div>
+                                    <div class="col col-sm-6">
                                         <select class="form-control" id="comingkids" name="guest">
                                             <option disabled selected  value="0">Number Of Children</option>
                                             <option value="1">1</option>
@@ -872,6 +879,7 @@
                                         <textarea id="song" class="contact-textarea" placeholder="Song name and artist" name="song"></textarea>
                                     </div>
                                     <div class="col-12 text-center">
+                                        <div id="rsvpmessage" style="display:none;background:lightgreen">Your RSVP has been saved</div>
                                         <button id="rsvpsubmit" class="submit">Send RSVP</button>
                                         <span id="loader"><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i></span>
                                     </div>
@@ -893,7 +901,7 @@
         <div class="container">
             <div class="pb--100 col-12">
                 <div class="section-title text-center">
-                    <h2>Gift Registration</h2>
+                    <h2>Gift Registry</h2>
                     <p>Leo and Loreley will be starting a new life together and have made a list of items that will help them in their journey together. If you would like to give them a gift, please have a look at the wedding registry for things that they may like. You need not limit yourself to the items listed below, however, we ask that should you choose an item on the list that you "pledge" the item, this will inform other guests that you have already bought the gift and will prevent duplicates of some of the items. If you would prefer to give a gift card or cash donation to their future, we would like to inform you that there will be a safe at the gift table where you can safely leave your envelope to the happy couple.</p>
                 </div>
             </div>
