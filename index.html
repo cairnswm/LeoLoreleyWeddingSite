@@ -825,20 +825,30 @@
                         <div class="contact-form form-style">
                             <form id="rsvp-form" class="validate-rsvp-form">
                                 <div class="row">
-                                    <div class="col-12 col-sm-6">
+                                    <div class="col-12">
                                         <input type="text" placeholder="Your Name*" id="fname" name="name">
                                     </div>
-                                    <div class="col-12  col-sm-6">
+                                    <div class="col-12">
                                         <input type="text" placeholder="Your Email*" id="email" name="email">
                                     </div>
-                                    <div class="col col-sm-6">
+                                    <div class="col col-sm-12">
                                         <select class="form-control" id="attending" name="events">
                                             <option disabled selected value="unknown">I Am Attending*</option>
                                             <option value="yes">I will be there!</option>
                                             <option value="no">I cannot attend</option>
                                         </select>
                                     </div>
-                                    <div class="col col-sm-6">
+                                    
+                                    <div class="col-12">
+                                        <select class="form-control" id="dietry" name="guest">
+                                            <option disabled selected value="0">Dietry Requirements</option>
+                                            <option value="1">Vegetarian</option>
+                                            <option value="2">Vegan</option>
+                                            <option value="3">Halaal</option>
+                                            <option value="4">No special dietry</option>
+                                        </select>
+                                    </div>
+                                    <div class="col col-sm-12">
                                         <select class="form-control" id="coming" name="guest">
                                             <option disabled selected value="0">Number Of Guests</option>
                                             <option value="1">1</option>
@@ -847,11 +857,7 @@
                                             <option value="4">4</option>
                                         </select>
                                     </div>
-                                    <div class="col col-sm-6">
-                                        <label>Who will be coming?</label>
-                                        <div id="guestnames"></div>
-                                    </div>
-                                    <div class="col col-sm-6">
+                                    <div class="col col-sm-12">
                                         <select class="form-control" id="comingkids" name="guest">
                                             <option disabled selected  value="0">Number Of Children</option>
                                             <option value="1">1</option>
@@ -860,15 +866,17 @@
                                             <option value="4">4</option>
                                         </select>
                                     </div>
-                                    
-                                    <div class="col col-sm-6">
-                                        <select class="form-control" id="dietry" name="guest">
-                                            <option disabled selected value="0">Dietry Requirements</option>
-                                            <option value="1">Vegetarian</option>
-                                            <option value="2">Vegan</option>
-                                            <option value="3">Halaal</option>
-                                            <option value="4">No special dietry</option>
-                                        </select>
+                                    <div class="col-12">
+                                        <label>Who will be coming?</label>
+                                        <div id="guestnames"></div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div style="padding-left:50px">
+                                        <div id="partnerName" style="display:none">
+                                        <br/><label>Partner Name</label>
+                                        <input type="text" placeholder="Name" id="pname" name="pname">
+                                        </div>
+                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <br/><label>Any special requirements?</label>

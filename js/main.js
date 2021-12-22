@@ -222,6 +222,7 @@ function UserDetails() {
             $("#song").val(data.song);
             $("#attending").val(data.attending || "unknown")
             $("#dietry").val(data.dietry || "0")
+            $("#pname").val(data.partnername || "")
             let sel = $('#coming')
             sel.empty();
             sel.append($("<option>").attr('disabled', 'disabled').attr('value',-1).text("Number of Guests"));
@@ -252,6 +253,9 @@ function UserDetails() {
                 name = name.trim()
                 addCheckbox("#guestnames", name, attending.includes(name))
             })
+            if (data.guestnames.includes("Partner")) {
+                $("#partnerName").show()
+            }
 
             // Set top page greeting
             $("#greeting").text(`Dear ${username}`)
@@ -279,7 +283,8 @@ function saveUserDetails(event) {
         comingkids: $("#comingkids").val(),
         dietry: $("#dietry").val(),
         attending: $("#attending").val(),
-        attendingnames: attendingguests
+        attendingnames: attendingguests,
+        partnername: $("#pname").val()
     }
     console.log("saveUserDetails",data)
     let options = {
