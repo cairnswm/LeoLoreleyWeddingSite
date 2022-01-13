@@ -126,7 +126,7 @@ const apiurl = "https://cairns.co.za/wedding/php/api.php";
                     <a href="${item.link}">${item.name}<br/>(${item.num} please)</a><br/>
                 </div>`;
                 if (item.pledged && item.pledgebyid != userid) {                
-                    giftstring += "<em>Already pledged "+item.pledgebyid+"</em>"
+                    giftstring += "<em>Already pledged</em>"
                 } else {
                     giftstring += `<input id="gift${item.id}" data-id="${item.id}" type="checkbox" ${item.pledged?"checked":""} /><label for="gift${item.id}" style="margin-left:20px">Pledge</label>`;
                 }
